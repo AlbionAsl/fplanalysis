@@ -1,18 +1,18 @@
-from flask import Flask, render_template, request
+from flask import Flask, request, render_template
 import random
 import time
 
 app = Flask(__name__)
 
 @app.route("/")
-def index():
-    return render_template("index.html")
+def home():
+    return render_template("home.html")
 
 @app.route("/start", methods=["POST"])
 def start():
     start_time = time.time()
     questions = []
-    for i in range(50):
+    for i in range(10):
         num1 = random.randint(0, 100)
         num2 = random.randint(0, 100)
         operator = random.choice(["+", "-"])
@@ -30,10 +30,9 @@ def submit():
 
     score = 0
     for i, answer in enumerate(answers):
-        num1, operator, num2 = map(int, answer.split())
-        if operator == "+":
+        if "+" in questions[i]:
             result = num1 + num2
-        elif operator == "-":
+        elif "-" in questions[i]:
             result = num1 - num2
         score += (result == int(answers[i]))
 
@@ -41,4 +40,5 @@ def submit():
 
 if __name__ == "__main__":
     app.run()
+
 
