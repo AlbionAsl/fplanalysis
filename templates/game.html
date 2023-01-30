@@ -1,0 +1,16 @@
+<!-- templates/game.html -->
+<html>
+<head>
+  <title>Arithmetic Game</title>
+</head>
+<body>
+  <h1>Arithmetic Game</h1>
+  <form action="/check" method="post">
+    <input type="hidden" name="a" value="{{ a }}">
+    <input type="hidden" name="b" value="{{ b }}">
+    <input type="hidden" name="operator" value="{{ operator }}">
+    <p>{{ a }} {{ operator }} {{ b }} = <input type="text" name="answer"></p>
+    <input type="submit" value="Submit">
+  </form>
+</body>
+</html>
