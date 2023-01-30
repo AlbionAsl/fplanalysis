@@ -1,0 +1,17 @@
+<!-- templates/questions.html -->
+
+<html>
+    <head>
+        <title>Arithmetic Game</title>
+    </head>
+    <body>
+        <form action="{{ url_for('submit') }}" method="post">
+            {% for question in questions %}
+                {{ question }} <input type="text" name="answer" required>
+                <br>
+            {% endfor %}
+            <input type="hidden" name="start_time" value="{{ start_time }}">
+            <input type="submit" value="Done">
+        </form>
+    </body>
+</html>
